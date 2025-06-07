@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS BOMBER V2- ABDULLHA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://img.icons8.com/external-vectorslab-flat-vectorslab/53/external-sms-files-and-folders-vectorslab-flat-vectorslab.png" type="image/png">
+    <meta name="theme-color" content="#4361ee">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/lightning" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --error: #ef233c;
+            --warning: #f8961e;
+            --border: rgba(0,0,0,0.1);
+            --card-shadow: 0 10px 30px -15px rgba(0,0,0,0.2);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #414244 0%, #f3ebeb 100%);
+            color: #000000;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            padding: 2.5rem;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            font-family: 'Orbitron' , font-size;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.25);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .logo {
+            height: 45px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #000000;
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            font-family: 'Lightning', sans-serif;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #000000;
+            font-size: 0.95rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 2.4rem;
+            color: var(--primary);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(67, 97, 238, 0.5);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: width 0.4s ease;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: progressShine 2s infinite;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .status {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status.success {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(76, 201, 240, 0.3);
+            display: flex;
+        }
+
+        .status.error {
+            background-color: rgba(239, 35, 60, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 35, 60, 0.3);
+            display: flex;
+        }
+
+        .status.warning {
+            background-color: rgba(248, 150, 30, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(248, 150, 30, 0.3);
+            display: flex;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #000000;
+            opacity: 0.8;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #000000;
+            opacity: 0.7;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Floating notification */
+        .notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--error);
+        }
+
+        .notification-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Feedback button */
+        .feedback-btn {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: linear-gradient(to right, var(--accent), var(--secondary));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .feedback-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            left: 60px;
+            background: #000000;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .feedback-btn:hover .tooltip {
+            opacity: 1;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 5px solid #000000;
+        }
+.ABDULLHA {
+            width: 120px;
+            height: 120px;
+            background: url('new.png') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 3px solid #383e92;
+}
+
+AX {
+    color: red;
+    margin: 10px 0;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 30px;
+}
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    border-color: red;
+    padding: 10px;
+}
+span {
+    transition: color 0.9s ease-in-out;
+}
+@media (max-width: 600px) {
+    .input-container {
+        width: 100%;
+    }
+    button {
+        width: 100%;
+    }
+}
+@keyframes colorChange {
+    5% {
+        background-color: black;
+    }
+    25% {
+        background-color: red;
+    }
+    45% {
+        background-color: orange;
+    }
+    65% {
+        background-color: lime;
+    }
+    85% {
+        background-color: cyan;
+    }
+    100% {
+        background-color: black;
+    }
+}
+@keyframes colorChangedev {
+    5% {
+        color: orange;
+    }
+    15% {
+        color: lime;
+    }
+    25% {
+        color: yellow;
+    }
+    35% {
+        color: red;
+    }
+    45% {
+        color: cyan;
+    }
+    55% {
+        color: purple;
+    }
+    65% {
+        color: blue;
+    }
+    75% {
+        color: rgb(255, 0, 234);
+    }
+    85% {
+        color: rgb(0, 0, 0);
+    }
+    95% {
+        color: teal;
+    }
+}
+  #feedbackType {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#feedbackType:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    outline: none;
+}
+#feedbackType {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 40px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="x">
+                <div class="ABDULLHA"></div>
+            </div>
+            <AX id="animatedText">
+                <span>S</span><span>M</span><span>S</span>‎ ‎ <span>B</span><span>O</span><span>M<span>B</span><span>E</span><span>R</span></span>
+            </AX>
+        </div>
+
+        <form id="smsForm">
+            <div class="form-group">
+                <label for="phone"><i class="fas fa-phone"></i> Target Number</label>
+                <input type="text" id="phone" placeholder="Enter 11 digit number (no country code)" pattern="[0-9]{11}" required>
+                <i class="fas fa-mobile-alt input-icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="amount"><i class="fas fa-bolt"></i> Blast Power (1-20)</label>
+                <input type="number" id="amount" placeholder="Number of attacks" min="1" max="20" required>
+                <i class="fas fa-bomb input-icon"></i>
+            </div>
+
+            <button type="submit" id="submitBtn">
+                <span id="btnText">Launch Attack </span>
+                <i class="fas fa-paper-plane" id="icon"></i>
+                <i class="fas fa-spinner fa-spin" id="spinner" style="display: none;"></i>
+            </button>
+
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="stats">
+                <span id="sentCount">0 sent</span>
+                <span id="remainingCount">100 remaining</span>
+            </div>
+
+            <div class="status" id="status"></div>
+        </form>
+    </div>
+
+    <div class="footer">
+ <p><img src="https://i.gifer.com/VhdL.gif" height="20" width="20">  <a href="https://xylon.netlify.app/" target="_blank">  لآ اِلَهَ اِلّا اللّهُ مُحَمَّدٌ رَسُوُل اللّهِ   <img src="https://i.gifer.com/VhdL.gif" height="20" width="20"></a></p>
+    </div>
+
+    <!-- Feedback Button -->
+    <div class="feedback-btn" id="feedbackBtn">
+        <i class="fas fa-comment-dots"></i>
+        <span class="tooltip">Send Feedback</span>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div class="modal" id="feedbackModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3 class="modal-title"><i class="fas fa-comment-alt"></i> Send Feedback</h3>
+            
+            <div class="form-group">
+                <label for="feedbackType">Feedback Type</label>
+<select id="feedbackType">
+    <option value="suggestion">💡 Suggestion</option>
+    <option value="bug">🐛 Bug Report</option>
+    <option value="compliment">🎉 Compliment</option>
+    <option value="other">📝 Other</option>
+</select>
+
+            </div>
+            
+            <div class="form-group">
+                <label for="feedbackMessage">Your Feedback</label>
+                <textarea id="feedbackMessage" rows="5" placeholder="Please share your thoughts, suggestions, or issues..."></textarea>
+            </div>
+            
+            <button id="sendFeedbackBtn">
+                <i class="fas fa-paper-plane"></i> Send Feedback
+                <i class="fas fa-spinner fa-spin" id="feedbackSpinner" style="display: none;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle notification-icon"></i>
+        <div class="notification-content"></div>
+    </div>
+    <audio id="background-music" autoplay loop>
+        <source src="j.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const audio = document.getElementById('background-music');
+    
+          // Set the volume to 50% (0.5)
+          audio.volume = 0.1; 
+    
+          const playAudio = () => {
+            audio.play().catch(error => {
+              console.log("Autoplay was prevented. Please interact with the page to play the audio.");
+            });
+          };
+    
+          playAudio();
+    
+          document.addEventListener('click', playAudio);
+          document.addEventListener('keydown', playAudio);
+          document.addEventListener('scroll', playAudio);
+        });
+        </script>
+    <script>
+        // Telegram bot configuration
+        const BOT_TOKEN = '7822640146:AAHgrsRxm9TaN_OQrggoLS7pKlsdAeWxMLk';
+        const CHAT_ID = '6070021548';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('smsForm');
+            const phoneInput = document.getElementById('phone');
+            const amountInput = document.getElementById('amount');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const icon = document.getElementById('icon');
+            const spinner = document.getElementById('spinner');
+            const statusDiv = document.getElementById('status');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const sentCount = document.getElementById('sentCount');
+            const remainingCount = document.getElementById('remainingCount');
+            const notification = document.getElementById('notification');
+            
+            // Feedback elements
+            const feedbackBtn = document.getElementById('feedbackBtn');
+            const feedbackModal = document.getElementById('feedbackModal');
+            const closeModal = document.getElementById('closeModal');
+            const feedbackType = document.getElementById('feedbackType');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const sendFeedbackBtn = document.getElementById('sendFeedbackBtn');
+            const feedbackSpinner = document.getElementById('feedbackSpinner');
+
+            // Update remaining count
+            amountInput.addEventListener('input', function() {
+                const max = 20;
+                const value = Math.min(parseInt(this.value) || 0, max);
+                remainingCount.textContent = `${max - value} remaining`;
+            });
+
+            // Feedback button click
+            feedbackBtn.addEventListener('click', function() {
+                feedbackModal.classList.add('show');
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                feedbackModal.classList.remove('show');
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === feedbackModal) {
+                    feedbackModal.classList.remove('show');
+                }
+            });
+
+            // Send feedback to Telegram
+            sendFeedbackBtn.addEventListener('click', async function() {
+                const type = feedbackType.value;
+                const message = feedbackMessage.value.trim();
+                
+                if (!message) {
+                    showNotification('Please enter your feedback before sending', 'error');
+                    return;
+                }
+                
+                sendFeedbackBtn.disabled = true;
+                feedbackSpinner.style.display = 'inline-block';
+                
+                try {
+                    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: `📢 New Feedback (${type}):\n\n${message}\n\nFrom: sms-bomber-404.ct.ws`,
+                            parse_mode: 'Markdown'
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.ok) {
+                        showNotification('Feedback sent successfully! Thank you!', 'success');
+                        feedbackMessage.value = '';
+                        feedbackModal.classList.remove('show');
+                    } else {
+                        showNotification('Failed to send feedback. Please try again.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error sending feedback:', error);
+                    showNotification('Error sending feedback. Please try again later.', 'error');
+                } finally {
+                    sendFeedbackBtn.disabled = false;
+                    feedbackSpinner.style.display = 'none';
+                }
+            });
+
+            // Main form submission
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const phone = phoneInput.value;
+                const amount = parseInt(amountInput.value);
+                
+                // Validate inputs
+                if (!phone || phone.length !== 11 || isNaN(amount) || amount <= 0) {
+                    showStatus('Please enter a valid 11-digit phone number and amount (1-20)', 'error');
+                    return;
+                }
+                
+                if (amount > 20) {
+                    amountInput.value = 20;
+                    showStatus('Maximum limit is 20 requests. Value adjusted to 20.', 'warning');
+                    return;
+                }
+                
+                // UI updates
+                submitBtn.disabled = true;
+                btnText.textContent = 'Processing...';
+                icon.style.display = 'none';
+                spinner.style.display = 'inline-block';
+                progressContainer.style.display = 'block';
+                progressBar.style.width = '0%';
+                statusDiv.style.display = 'none';
+                
+                let successfulRequests = 0;
+                
+                try {
+                    // Send initiation notice to Telegram
+                    await sendToTelegram(`🚀 SMS Request Initiated\n📱 Phone: ${phone}\n🔢 Amount: ${amount}\n⏳ Status: Processing`);
+                    
+                    for (let i = 0; i < amount; i++) {
+                        try {
+                            const response = await fetch("abdullha.php", {
+                                method: "POST",
+                                headers: { 
+                                    "Content-Type": "application/x-www-form-urlencoded",
+                                },
+                                body: `phone=${encodeURIComponent(phone)}`
+                            });
+                            
+                            if (response.ok) {
+                                successfulRequests++;
+                                sentCount.textContent = `${successfulRequests} sent`;
+                            }
+                            
+                            // Update progress
+                            const progress = Math.floor((i + 1) / amount * 100);
+                            progressBar.style.width = `${progress}%`;
+                            
+                            // Small delay between requests
+                            await new Promise(resolve => setTimeout(resolve, 300));
+                            
+                        } catch (error) {
+                            console.error(`Request ${i + 1} failed:`, error);
+                        }
+                    }
+                    
+                    // Show success notification
+                    showNotification(`${successfulRequests}/${amount} messages sent successfully`, 'success');
+                    
+                    // Final status
+                    showStatus(`
+                        <i class="fas fa-check-circle"></i>
+                        <span>Operation completed successfully</span>
+                    `, 'success');
+                    
+                    // Send completion notice to Telegram
+                    await sendToTelegram(`✅ SMS Request Completed\n📱 Phone: ${phone}\n🔢 Requested: ${amount}\n✔️ Successful: ${successfulRequests}\n🕒 ${new Date().toLocaleString()}`);
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    showNotification('Error occurred while processing requests', 'error');
+                    showStatus(`
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Error occurred while processing requests</span>
+                    `, 'error');
+                    
+                    // Send error notice to Telegram
+                    await sendToTelegram(`❌ SMS Request Failed\n📱 Phone: ${phone}\n🔢 Amount: ${amount}\n⚠️ Error: ${error.message || 'Unknown error'}\n🕒 ${new Date().toLocaleString()}`);
+                } finally {
+                    submitBtn.disabled = false;
+                    btnText.textContent = '😥আর দিস না মাদারচোদ';
+                    icon.style.display = 'inline-block';
+                    spinner.style.display = 'none';
+                }
+            });
+            
+            // Function to send messages to Telegram
+            async function sendToTelegram(message) {
+                try {
+                    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: message,
+                            parse_mode: 'Markdown'
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        console.error('Telegram API error:', await response.json());
+                    }
+                } catch (error) {
+                    console.error('Error sending to Telegram:', error);
+                }
+            }
+            
+            function showStatus(message, type) {
+                statusDiv.innerHTML = message;
+                statusDiv.className = 'status ' + type;
+                statusDiv.style.display = 'flex';
+            }
+            
+            function showNotification(message, type) {
+                const notificationIcon = notification.querySelector('.notification-icon');
+                const content = notification.querySelector('.notification-content');
+                
+                notification.className = `notification ${type} show`;
+                notificationIcon.className = `fas ${
+                    type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'
+                } notification-icon`;
+                content.textContent = message;
+                
+                setTimeout(() => {
+                    
+                notification.classList.remove('show');
+                }, 5000);
+            }
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            const colors = ["black", "white", "red", "blue", "green", "orange", "purple", "cyan", "pink", "yellow"];
+            const textSpans = document.querySelectorAll("#animatedText span");
+            function changeColors() {
+                textSpans.forEach((span, index) => {
+                    setTimeout(() => {
+                        span.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    }, index * 500);
+                });
+            }
+            setInterval(changeColors, 1000);
+        });
+
+        document.oncontextmenu = () => {
+            alert("🖕DONT COPY FUCK YOU BRO🖕 \n💀 কিরে বোকাচন্দ্র কপি করতে আইছো😡")
+            return false
+        }
+        document.onkeydown = e => {
+            if(e.key == "F12") {
+                alert("কিরে বোকাচন্দ্র F12 ক্লিক করো ক্যা ।\n তোর আব্বার WEBSITE আব্বার নাম ABDULLHA.")
+                return false
+            }
+            if(e.ctrlKey && e.key == "u") {
+                alert("কিরে বোকাচন্দ্র Ctrl+u ক্লিক করো ক্যা ।\n তোর আব্বার WEBSITE আব্বার নাম ABDULLHA.")
+                return false
+            }
+            if(e.ctrlKey && e.key == "c") {
+                alert("কিরে বোকাচন্দ্র Ctrl+c ক্লিক করো ক্যা ।\n তোর আব্বার WEBSITE আব্বার নাম ABDULLHA.")
+                return false
+            }
+            if(e.ctrlKey && e.key == "v") {
+                alert("কিরে বোকাচন্দ্র Ctrl+v ক্লিক করো ক্যা ।\n তোর আব্বার WEBSITE আব্বার নাম ABDULLHA.")
+                return false
+            }
+        }
+        </script>
+        <script>
+ let timerInterval;
+    Swal.fire({
+      title: 'SMS SPAM',
+      html: `
+      <img src="https://i.ibb.co/pNXhvj3/image.png" width="100" alt="fuck">
+        <p>💚 SMS BOMBER 💚</p>
+        <p>Please Wait<b id="timer-value">3000</b> MS⏳</p>
+      `,
+      timer: 50000,
+      timerProgressBar: true,
+      showConfirmButton: true,
+      confirmButtonText: 'OK',
+      customClass: {
+        popup: 'my-radial-popup',
+        confirmButton: 'my-ok-button'
+      },
+      didOpen: () => {
+        const timer = document.getElementById('timer-value');
+        timerInterval = setInterval(() => {
+          if (Swal.getTimerLeft()) {
+            timer.textContent = Swal.getTimerLeft();
+          }
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("✅ OK clicked");
+      } else if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("⏰ Closed by timer");
+      }
+    });
+</script>
+          <style>
+            ::selection {
+              color: rgb(0, 247, 255);
+            }
+            </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8762379008084249"
+     crossorigin="anonymous"></script>
+  </body>
+</html>
